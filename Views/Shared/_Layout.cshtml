@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link rel="shortcut icon" type="image/png" href="~/assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/css/metisMenu.css">
+    <link rel="stylesheet" href="~/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/css/slicknav.min.css">
+
+    <!-- others css -->
+    <link rel="stylesheet" href="~/assets/css/typography.css">
+    <link rel="stylesheet" href="~/assets/css/default-css.css">
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="~/assets/js/jquery-3.4.1.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+
+    <!-- include the script -->
+    <script src="~/assets/js/alertify.min.js"></script>
+
+    <!-- include the style -->
+    <link rel="stylesheet" href="~/assets/js/css/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="~/assets/js/css/themes/default.min.css" />
+
+    <!-- JS -->
+
+
+    <script src="~/assets/js/menu.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- CSS  -->
+    <link href="~/assets/css/menu.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="page-container">
+        <!-- sidebar menu area start -->
+        @if (Session["username"] != null)
+        {
+            <section id="desktop-menu" class="desktop-menu">
+                <nav class="sidebar flex-column-nowrap">
+                    <ul class="sidebar__nav-list flex-column-nowrap" role="menubar" aria-label="Main desktop menu">
+                        <li class="nav-list__item my-work fake-button flex-column-nowrap" role="menuitem">
+                            <a href="@Url.Content("~/Productos/Index")" tabindex="0">
+                                <img src="~/assets/images/icon/Productos.png" width="40px" height="40px" class="flex-row-wrap">
+                                <span class="u-uppercase">Productos</span>
+                            </a>
+                        </li>
+                        @if (Session["idTypeUser"].Equals(1))
+                        {
+                            <li class="nav-list__item skills fake-button flex-column-nowrap" role="menuitem">
+                                <a href="@Url.Content("~/User/Index")" tabindex="0">
+                                    <img src="~/assets/images/icon/Users.png" width="40px" height="40px" class="flex-row-wrap">
+                                    <span class="u-uppercase">Usuarios</span>
+
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </section>
+        }
+
+
+        <!-- sidebar menu area end -->
+        <!-- main content area start -->
+        <div class="main-content">
+            <!-- header area start -->
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <!-- profile info & task notification -->
+                    @if (Session["username"] != null)
+                    {
+                        <div class="col-md-6 col-sm-4 clearfix">
+                            <div class="pull-right" style="color:white">
+
+                                <div class="btn-group">
+                                    <div class="btn-group dropleft" role="group">
+                                        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(102px, 56px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            <a class="dropdown-item" href="@Url.Content("~/Login/LogOut")">
+                                                <i class="fa fa-power-off"></i><span>Salir</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-secondary btn-sm" type="button">
+                                        <img class="avatar user-thumb"
+                                             src="~/assets/images/author/avatar.png" alt="avatar">
+                                        @Session["username"]
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            @RenderBody()
+        </div>
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <p>© Copyright 2019. All right reserved.</p>
+            </div>
+        </footer>
+        <!-- footer area end-->
+    </div>
+    <!-- footer area end-->
+    <!-- page container area end -->
+    <!-- jquery latest version -->
+
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/metisMenu.min.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/assets/js/jquery.slicknav.min.js"></script>
+
+
+    <!-- others plugins -->
+    <script src="~/assets/js/plugins.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+
+</body>
+</html>

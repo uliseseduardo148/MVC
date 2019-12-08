@@ -1,0 +1,68 @@
+﻿@model MVC.Models.tbl_productos
+
+@{
+    ViewBag.Title = "Eliminar";
+}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm">
+                <h3 style="text-align:center">¿Está seguro de eliminar el registro?</h3>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Nombre del producto
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fld_nombreProducto)
+                        </dd>
+
+                        <dt>
+                            Precio
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fld_precio)
+                        </dd>
+
+                        <dt>
+                            Existencias
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.fld_cantidad)
+                        </dd>
+
+                    </dl>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                            </div>
+                            <div class="col-sm">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Eliminar" class="btn btn-danger" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-sm">
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-sm">
+            </div>
+        </div>
+    </div>
+
+

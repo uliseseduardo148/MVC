@@ -1,0 +1,55 @@
+﻿@model MVC.Models.tbl_user
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+    <body background="~/assets/images/icon/fondoLogin.jpg">
+        @if (@TempData["mensaje"] != null)
+        {
+            <script type="text/javascript">
+                   alertify.set('notifier', 'position', 'top-center');
+                   alertify.error('@TempData["mensaje"]');
+            </script>
+        }
+        <div class="container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card">
+                    @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class="card-header">
+                            <h3>Iniciar Sesión</h3>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><img src="~/assets/images/icon/user.png" height="25" width="30"></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.fld_username, new { htmlAttributes = new { @class = "form-control", placeholder = "usuario", required = "required" } })
+
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><img src="~/assets/images/icon/passw.png" height="25" width="30"></span>
+                                    </div>
+                                    @Html.EditorFor(model => model.fld_password, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "contraseña", required = "required" } })
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn float-right login_btn">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center">
+                                <a href="@Url.Action("Create","User")" style="color:white">Regístrate</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </body>
+

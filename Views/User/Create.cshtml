@@ -1,0 +1,80 @@
+﻿@model MVC.Models.tbl_user
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+     
+    <div class="row">
+
+        @if (@TempData["mensaje"] != null)
+        {
+            if (@TempData["estado"].Equals("ok"))
+            {
+                <script type="text/javascript">
+                    alertify.alert()
+                        .setting({
+                            'title': '@TempData["mensaje"]',
+                        'label':'Aceptar',
+                        'message': ' Será redireccionado a la página principal' ,
+                        'onok': function () {
+                            window.location='Index/Login';
+                        }
+                         }).show();
+                </script>
+
+            }
+            else if (@TempData["estado"].Equals("fail"))
+            {
+                <script type="text/javascript">
+                    alertify.error('@TempData["mensaje"]');
+                </script>
+            }
+
+        }
+
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <h3 style="text-align:center">Regístrese</h3>
+            <hr />
+            <div class="form-group">
+                <div>
+                    @Html.EditorFor(model => model.fld_username, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre de usuario", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.fld_username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    @Html.EditorFor(model => model.fld_encryptedPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña", type = "password", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.fld_encryptedPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div>
+                    @Html.EditorFor(model => model.fld_password, new { htmlAttributes = new { @class = "form-control", placeholder = "Confirmar contraseña", type = "password", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.fld_password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-sm">
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" value="Registrar" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+}
+
