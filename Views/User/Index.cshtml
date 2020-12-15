@@ -4,28 +4,41 @@
     ViewBag.Title = "Usuarios";
 }
 
-<h2>Usuarios del sistema</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-6">
+            <table class="table">
+                <h2>Usuarios del sistema</h2>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Nombre de usuario
+                        </th>
+                        <th>
+                            Contraseña
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-<table class="table">
-    <tr>
-        <th>
-           Nombre de usuario
-        </th>
-        <th>
-           Contraseña
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fld_username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fld_encryptedPassword)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fld_username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fld_encryptedPassword)
-        </td>
-    </tr>
-}
+</div>
 
-</table>

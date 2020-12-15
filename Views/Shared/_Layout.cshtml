@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    @RenderSection("metatags", false)
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="~/assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/css/font-awesome.min.css">
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="~/assets/css/default-css.css">
     <link rel="stylesheet" href="~/assets/css/styles.css">
     <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/estilos.css">
     <!-- modernizr css -->
     <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="~/assets/js/jquery-3.4.1.min.js"></script>
@@ -42,38 +44,50 @@
 
     <!-- CSS  -->
     <link href="~/assets/css/menu.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
 </head>
 
 <body>
-
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- preloader area start -->
     <div id="preloader">
         <div class="loader"></div>
     </div>
-
+    <!-- preloader area end -->
+    <!-- page container area start -->
     <div class="page-container">
         <!-- sidebar menu area start -->
         @if (Session["username"] != null)
         {
             <section id="desktop-menu" class="desktop-menu">
                 <nav class="sidebar flex-column-nowrap">
+                    <a class="sidebar__logo">
+                        <abbr class="logo"><img src="~/assets/images/icon/logo.png" height="90px" width="70px"></abbr>
+                    </a>
+                    <hr />
                     <ul class="sidebar__nav-list flex-column-nowrap" role="menubar" aria-label="Main desktop menu">
-                        <li class="nav-list__item my-work fake-button flex-column-nowrap" role="menuitem">
+                        <li class="nav-list__item skills fake-button flex-column-nowrap" role="menuitem">
                             <a href="@Url.Content("~/Productos/Index")" tabindex="0">
                                 <img src="~/assets/images/icon/Productos.png" width="40px" height="40px" class="flex-row-wrap">
-                                <span class="u-uppercase">Productos</span>
+                                <span>Productos</span>
+
                             </a>
                         </li>
                         @if (Session["idTypeUser"].Equals(1))
                         {
-                            <li class="nav-list__item skills fake-button flex-column-nowrap" role="menuitem">
+                            <li class="nav-list__item about-me fake-button flex-column-nowrap" role="menuitem">
                                 <a href="@Url.Content("~/User/Index")" tabindex="0">
+                                    <svg viewBox="0 0 44.017969 41.921879" role="img" aria-labelledby="Users">
+                                    </svg>
                                     <img src="~/assets/images/icon/Users.png" width="40px" height="40px" class="flex-row-wrap">
-                                    <span class="u-uppercase">Usuarios</span>
-
+                                    <span>Usuarios</span>
                                 </a>
                             </li>
                         }
                     </ul>
+
                 </nav>
             </section>
         }
@@ -85,12 +99,16 @@
             <!-- header area start -->
             <div class="header-area">
                 <div class="row align-items-center">
-                    <!-- profile info & task notification -->
-                    @if (Session["username"] != null)
-                    {
-                        <div class="col-md-6 col-sm-4 clearfix">
-                            <div class="pull-right" style="color:white">
+                    <!-- nav and search button -->
+                    <div class="col-md-6 col-sm-8 clearfix">
 
+
+                    </div>
+                    <!-- profile info & task notification -->
+                    <div class="col-md-6 col-sm-4 clearfix">
+                        <div class="pull-right" style="color:white">
+                            @if (Session["username"] != null)
+                            {
                                 <div class="btn-group">
                                     <div class="btn-group dropleft" role="group">
                                         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,9 +126,9 @@
                                         @Session["username"]
                                     </button>
                                 </div>
-                            </div>
+                            }
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
 
@@ -120,7 +138,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2019. All right reserved.</p>
+                <p>© Copyright 2019. Universidad Tecnológica de la Selva.</p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -138,6 +156,7 @@
     <!-- others plugins -->
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/scripts.js"></script>
-
 </body>
+
 </html>
+

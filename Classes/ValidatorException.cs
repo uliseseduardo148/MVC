@@ -7,7 +7,7 @@ namespace MVC.Classes
 {
     public class ValidatorException:Exception
     {
-        //Se obtiene una excepción, la cual recibe un mensaje que luego se imprime en consola
+        //Se obtiene una excepción, la cual recibe un mensaje que luego se muestra al usuario
         public ValidatorException(string message) : base(message)
         {
 

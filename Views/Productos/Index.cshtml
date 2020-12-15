@@ -5,56 +5,56 @@
 }
 
 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-6">
+                <h2>Productos</h2>
+                <p>
+                    @Html.ActionLink("Agregar registro", "Create")
+                </p>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Nombre del producto
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Existencias
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fld_nombreProducto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fld_precio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fld_cantidad)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.fld_idProducto }) |
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.fld_idProducto })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+            <div class="col-sm">
+            </div>
         </div>
-        <div class="col-6">
-            <h2>Productos</h2>
-            <p>
-                @Html.ActionLink("Agregar registro", "Create")
-            </p>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>
-                            Nombre del producto
-                        </th>
-                        <th>
-                            Precio
-                        </th>
-                        <th>
-                            Existencias
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
 
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fld_nombreProducto)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fld_precio)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.fld_cantidad)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Editar", "Edit", new { id = item.fld_idProducto }) |
-                            @Html.ActionLink("Eliminar", "Delete", new { id = item.fld_idProducto })
-                        </td>
-                    </tr>
-                }
-
-            </table>
-        </div>
-        <div class="col-sm">
-        </div>
     </div>
-</div>
-
+  

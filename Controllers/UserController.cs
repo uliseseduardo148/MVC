@@ -19,7 +19,7 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             if (Session["username"] == null || Session["idTypeUser"].Equals(2))
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
 
             var tbl_user = db.tbl_user.Include(t => t.tbl_typeUser);
             return View(tbl_user.ToList());
@@ -67,7 +67,7 @@ namespace MVC.Controllers
         public ActionResult Edit(int? id)
         {
             if (Session["username"] == null || Session["idTypeUser"].Equals(2))
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
 
             if (id == null)
             {
@@ -89,7 +89,7 @@ namespace MVC.Controllers
         public ActionResult Edit([Bind(Include = "fld_idUser,fld_username,fld_encryptedPassword,fld_password,fk_idTipo")] tbl_user tbl_user)
         {
             if (Session["username"] == null || Session["idTypeUser"].Equals(2))
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
 
             if (ModelState.IsValid && tbl_user.fld_encryptedPassword.Equals(tbl_user.fld_password))
             {

@@ -10,6 +10,8 @@ namespace MVC.Classes
 {
     public static class Helper
     {
+
+        //Este método es el encargado de cifrar la contraseña
         public static string Encrypt(string password)
         {
             SHA256 sha = new SHA256Managed();
@@ -22,6 +24,7 @@ namespace MVC.Classes
             return stringBuilder.ToString().Substring(0, 20);
         }
 
+        //Con este método validamos el formato de la contraseña
         public static string ValidatePassword(String password)
         {
             Regex pattern = new Regex("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$");

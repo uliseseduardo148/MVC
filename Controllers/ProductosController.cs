@@ -19,7 +19,7 @@ namespace MVC.Controllers
         public ActionResult Index()
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             return View(db.tbl_productos.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace MVC.Controllers
         public ActionResult Create()
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             return View();
         }
 
@@ -39,7 +39,7 @@ namespace MVC.Controllers
         public ActionResult Create([Bind(Include = "fld_idProducto,fld_nombreProducto,fld_precio,fld_cantidad")] tbl_productos tbl_productos)
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             if (ModelState.IsValid)
             {
                 db.tbl_productos.Add(tbl_productos);
@@ -55,7 +55,7 @@ namespace MVC.Controllers
         public ActionResult Edit(int? id)
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -75,7 +75,7 @@ namespace MVC.Controllers
         public ActionResult Edit([Bind(Include = "fld_idProducto,fld_nombreProducto,fld_precio,fld_cantidad")] tbl_productos tbl_productos)
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_productos).State = EntityState.Modified;
@@ -90,7 +90,7 @@ namespace MVC.Controllers
         public ActionResult Delete(int? id)
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -110,7 +110,7 @@ namespace MVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             if (Session["username"] == null)
-                return Redirect("~/Login/Index");
+                return Redirect("~/Error/Index");
             tbl_productos tbl_productos = db.tbl_productos.Find(id);
             db.tbl_productos.Remove(tbl_productos);
             db.SaveChanges();

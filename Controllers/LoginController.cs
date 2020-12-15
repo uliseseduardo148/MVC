@@ -18,6 +18,10 @@ namespace MVC.Controllers
             return View();
         }
 
+        /*Este método verifica la existencia del usuario en la base de datos.
+         * Ya que se usó SHA256 para encriptar el password no es posible desencriptarlo
+         * por lo que se retoma lo que introduce el usuario y se compara con lo que reside en la base de datos
+         */
         //POST: Login
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -44,6 +48,7 @@ namespace MVC.Controllers
             return View(usuario);
         }
 
+        //Este método destruye la sesión
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
